@@ -124,16 +124,16 @@ def crear_fig_embarcaciones(df):
 
 ### 🐋 Ballenas
 
-:::: {style="display: flex; gap: 20px; align-items: flex-start; flex-wrap: wrap;"}
+:::: {.columns}
 
-::: {style="flex: 7; min-width: 60%;"}
+::: {.column width="70%"}
 ```{python}
 #| fig-responsive: true
 display(crear_fig_ballenas(ballenas))
 ```
 :::
 
-::: {style="flex: 3; min-width: 300px;"}
+::: {.column width="30%"}
 ::: {.callout-note appearance="minimal" icon=false}
 ## Indicador pelágico de largo alcance
 La ballena gris recorre hasta 20,000 kilómetros por temporada entre sus zonas de alimentación en el Ártico y sus criaderos en las lagunas de Baja California. Eso la convierte en un integrador biológico de condiciones oceánicas a escala continental.
