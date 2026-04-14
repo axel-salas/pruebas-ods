@@ -36,7 +36,7 @@ Este dashboard analiza cómo la actividad humana y fenómenos climáticos afecta
 
 ## Column {100%}
 
-## Panorama del sistema
+## ¿Qué encontrarás?
 
 ---
 
@@ -53,10 +53,7 @@ Visualización de patrones históricos:
 - Eventos de El Niño  
 
 Identifica cambios y momentos críticos del ecosistema.
-
 :::
-
----
 
 ## Column {33%}
 
@@ -70,10 +67,7 @@ Simulación de escenarios futuros:
 - Incertidumbre y variabilidad  
 
 Evalúa el impacto de decisiones actuales.
-
 :::
-
----
 
 ## Column {33%}
 
@@ -87,7 +81,6 @@ Síntesis estratégica:
 - Recomendaciones  
 
 Enfoque en sostenibilidad y toma de decisiones.
-
 :::
 
 ---
