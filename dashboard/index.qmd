@@ -12,7 +12,7 @@ format:
     orientation: columns
     self-contained: true 
 ---
-::: {.hero .fade-in}
+::: {.hero .fade-in-delay}
 
 # 🌊 Biodiversidad y Pesca en Baja California
 
