@@ -1,14 +1,3 @@
-#  Modelo Predictivo
-
-## Column {width="60%"}
-
-::: {.intro-hero}
-## Cuando la ecología se vuelve matemática
-
-::: {.callout-tip appearance="minimal" icon=false}
-## Cuando la ecología se vuelve matemática
-
-
 ```{python}
 #| cache: true
 #| label: setup
@@ -141,9 +130,6 @@ def monte_carlo(año_interv, factor_a, factor_f, seed=42):
 
 
 # ── 3. PRE-CÓMPUTO DE TODAS LAS COMBINACIONES ────────────────────────────────
-print("Pre-computando escenarios Monte Carlo...")
-print(f"  Combinaciones: {len(GRID_A)} × {len(GRID_F)} × {len(GRID_YR)} "
-      f"= {len(GRID_A)*len(GRID_F)*len(GRID_YR)} × {N_SIMS} sims cada una")
 
 CACHE = {}
 total = len(GRID_A) * len(GRID_F) * len(GRID_YR)
@@ -324,15 +310,32 @@ def construir_figura(variable='H'):
     )
 
     return fig
-
-fig_H = construir_figura('H')
-fig_H.show()
 ```
-:::
-:::
+#  Modelo Predictivo
 
+## Row
 
-## Column {width="40%"}
+### Column {width="60%" .tabset}
+
+####  Dinámica de la Biodiversidad (H)
+
+```{python}
+#| title: "Evolución de la Biomasa Marina"
+# Generamos y mostramos la figura H
+fig_H = construir_figura('H')
+display(fig_H)
+```
+
+####  Esfuerzo de la Flota Pesquera (P)
+
+```{python}
+#| title: "Evolución de la Capacidad de Captura"
+# Generamos y mostramos la figura P
+fig_P = construir_figura('P')
+display(fig_P)
+```
+
+### Column {width="40%"}
 
 ::: {.callout-note appearance="minimal" icon=false}
 ##  Descripción del modelo
@@ -344,7 +347,6 @@ Definimos dos variables:
 - **P(t): presión pesquera** (impacto humano).
 
 Ambas siguen un crecimiento con límite natural. Sin embargo:
-
 La pesca crece de forma casi independiente.
 La biodiversidad disminuye conforme aumenta la presión pesquera.
 
@@ -354,15 +356,14 @@ Aunque el ajuste histórico no es perfecto (como es común en sistemas ecológic
 :::
 
 ::: {.callout-note appearance="minimal" icon=false}
-##  Parte Interactiva  (CAMBIAR NOMBRE POR ALGO MENOS OBVIO)
+## 🎛️ Explorador de Escenarios
 El modelo nos permite hacer algo que los datos históricos solos no pueden: explorar escenarios de intervención. Los sliders a continuación te permiten ajustar dos parámetros de política pública y un horizonte temporal.
-**¿Qué puedes controlar?**
-- **Factor de reducción de la presión pesquera (a):** Simula regulaciones que limiten la captura total permitida: vedas, cuotas, zonas de exclusión. Un valor del 30% significa que la presión baja a una tercera parte de su nivel actual.
 
+**¿Qué puedes controlar?**
+
+- **Factor de reducción de la presión pesquera (a):** Simula regulaciones que limiten la captura total permitida: vedas, cuotas, zonas de exclusión. Un valor del 30% significa que la presión baja a una tercera parte de su nivel actual.
 
 - **Factor de reducción del crecimiento de la flota (f):** Simula políticas que frenen la expansión de embarcaciones: moratorias de registro, retiro de permisos, incentivos de reconversión. Un valor del 30% significa que la flota deja de crecer y empieza a contraerse.
 
-
 - **Año de intervención:** El momento en que comienzan a aplicarse estas políticas. Cada año de retraso tiene consecuencias que el modelo cuantifica.
-
 :::
