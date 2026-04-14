@@ -1,34 +1,76 @@
- Escenarios a futuro 
+#  Escenarios a futuro
+## Row {.tabset}
 
-## Column {width="55%"}
-GRAFICAS
+###  Escenario Inercial
 
-## Column {width="45%"}
+:::: {layout="[70, 30]"}
 
-::: {.callout-note appearance="minimal" icon=false}
-## 01 — [Escenario 1 **(Escenario inercial)**]
-
-Sin intervención, el índice H continúa su declive hacia valores cercanos a cero en el horizonte 2035-2040. La flota sigue creciendo por inercia económica. Las capturas se mantienen artificialmente altas mientras quedan recursos, luego colapsan. Este es el escenario del punto de no retorno.
-
+::: {#col-grafica-inercial}
+```{python}
+#| fig-responsive: true
+display(fig_inercial)
+```
 :::
 
+::: {#col-texto-inercial}
 ::: {.callout-note appearance="minimal" icon=false}
-## 02 — [Escenario 2 **(Escenario moderado)**]
+## 01 — Escenario inercial
+Sin intervención, el índice H continúa su declive hacia valores cercanos a cero en el horizonte 2035-2040. La flota sigue creciendo por inercia económica. 
 
-Una reducción del 50-60% en presión pesquera y crecimiento de flota, iniciada antes de 2030, permite que H se estabilice en torno a valores bajos pero positivos. El ecosistema no se recupera a sus niveles históricos, pero deja de colapsar. Es el escenario de la gestión del daño.
+Las capturas se mantienen artificialmente altas mientras quedan recursos, luego colapsan. Este es el escenario del punto de no retorno.
+:::
 :::
 
+::::
+
+###  Escenario Moderado
+
+:::: {layout="[70, 30]"}
+
+::: {#col-grafica-moderado}
+```{python}
+#| fig-responsive: true
+display(fig_conservacion)
+```
+:::
+
+::: {#col-texto-moderado}
 ::: {.callout-note appearance="minimal" icon=false}
-## 03 — [Escenario 3 **(Escenario de conservacion activa)**]
+## 02 — Escenario moderado
+Una reducción del 50-60% en presión pesquera y crecimiento de flota, iniciada antes de 2030, permite que H se estabilice en torno a valores bajos pero positivos. 
 
-Escenario de conservación activa: Reducciones del 70-90% en ambos parámetros, iniciadas cuanto antes, producen una trayectoria de recuperación lenta pero sostenida. H muestra una tendencia positiva hacia 2040. Este es el único escenario en que la respuesta a la pregunta inicial es: sí, puede recuperarse.
+El ecosistema no se recupera a sus niveles históricos, pero deja de colapsar. Es el escenario de la gestión del daño.
+:::
+:::
 
+::::
+
+###  Conservación Activa
+
+:::: {layout="[70, 30]"}
+
+::: {#col-grafica-activa}
+```{python}
+#| fig-responsive: true
+# Nota: Aquí usamos la figura del escenario 3 de tu código
+display(fig_catastrofico) 
+```
+:::
+
+::: {#col-texto-activa}
+::: {.callout-note appearance="minimal" icon=false}
+## 03 — Conservación activa
+Reducciones del 70-90% en ambos parámetros, iniciadas cuanto antes, producen una trayectoria de recuperación lenta pero sostenida. 
+
+H muestra una tendencia positiva hacia 2040. Este es el único escenario en que la respuesta a la pregunta inicial es: **sí, puede recuperarse**.
 :::
 
 ::: {.callout-warning appearance="minimal" icon=false}
 ## 📋 Recomendaciones
-
-- [Recomendación 1 para tomadores de decisiones]
-- [Recomendación 2 para organismos de conservación]
-- [Recomendación 3 para investigación futura]
+- Implementar cuotas de captura dinámicas basadas en el índice H.
+- Establecer zonas de veda total en áreas de anidación críticas detectadas.
+- Priorizar la investigación de resiliencia climática ante eventos de El Niño.
 :::
+:::
+
+::::
