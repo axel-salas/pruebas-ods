@@ -1,8 +1,5 @@
 ---
-title: "Análisis Exploratori"
-format:
-  dashboard:
-    orientation: columns
+title: "Análisis Exploratorio"
 ---
 ```{python}
 #| label: setup
