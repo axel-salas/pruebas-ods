@@ -11,9 +11,10 @@
 
 ```{python}
 #| cache: true
-#| 
+#| label: setup
 import numpy as np
 import plotly.graph_objects as go
+from plotly.subplots import make_subplots
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -43,7 +44,8 @@ AÑOS     = np.arange(AÑO_INI, AÑO_INI + T_PROJ)
 N_HIST   = len(H_OBS)
 N_SIMS   = 200
 
-# Grids (incluyendo explotación > 1.0)
+# ── NUEVOS GRIDS (Incluyendo casos de Explotación > 1.0) ──
+# 10 valores para A x 10 para F x 7 para YR = 700 combinaciones
 GRID_A  = np.array([0.20, 0.40, 0.60, 0.80, 1.00, 1.20, 1.40, 1.60, 1.80, 2.00])
 GRID_F  = np.array([0.20, 0.40, 0.60, 0.80, 1.00, 1.20, 1.40, 1.60, 1.80, 2.00])
 GRID_YR = np.array([2025, 2027, 2030, 2032, 2035, 2037, 2040])
@@ -139,17 +141,27 @@ def monte_carlo(año_interv, factor_a, factor_f, seed=42):
 
 
 # ── 3. PRE-CÓMPUTO DE TODAS LAS COMBINACIONES ────────────────────────────────
-CACHE = {}
+print("Pre-computando escenarios Monte Carlo...")
+print(f"  Combinaciones: {len(GRID_A)} × {len(GRID_F)} × {len(GRID_YR)} "
+      f"= {len(GRID_A)*len(GRID_F)*len(GRID_YR)} × {N_SIMS} sims cada una")
 
+CACHE = {}
+total = len(GRID_A) * len(GRID_F) * len(GRID_YR)
+prog  = 0
 
 for fa in GRID_A:
     for ff in GRID_F:
         for yr in GRID_YR:
             key = (round(fa, 2), round(ff, 2), int(yr))
             CACHE[key] = monte_carlo(int(yr), fa, ff)
- 
+            prog += 1
+            if prog % 50 == 0 or prog == total:
+                print(f"  {prog}/{total} combinaciones completadas", end='\r')
 
-# ── 4. CONSTRUCCIÓN DE FIGURAS CON SLIDERS Y BANDAS DE INCERTIDUMBRE ─────────
+print("\nPre-cómputo completado.")
+
+
+# ── 4. CONSTRUCCIÓN DE FIGURAS CON SLIDERS ────────────────────────────────────
 
 AÑOS_STR    = [str(a) for a in AÑOS]
 AÑOS_OBS    = list(AÑOS[:N_HIST])
@@ -188,7 +200,7 @@ def construir_figura(variable='H'):
 
     fig = go.Figure()
 
-    # Traces fijos (datos históricos)
+    # Traces fijos
     fig.add_trace(go.Scatter(
         x=AÑOS_OBS, y=list(obs_data),
         mode='markers',
@@ -197,18 +209,28 @@ def construir_figura(variable='H'):
         hovertemplate='Año: %{x}<br>Valor: %{y:.3f}<extra></extra>',
     ))
 
-    # Curvas de mediana
+    # Bandas y medianas
+    """"
+    fig.add_trace(go.Scatter(
+        x=band_x, y=band_y(d0, di),
+        fill='toself', fillcolor=_hex_rgba(col_iner, 0.10),
+        line=dict(color='rgba(0,0,0,0)'), showlegend=False, name='_band_iner', hoverinfo='skip',
+    ))
+    fig.add_trace(go.Scatter(
+        x=band_x, y=band_y(d0, dk),
+        fill='toself', fillcolor=_hex_rgba(col_cons, 0.15),
+        line=dict(color='rgba(0,0,0,0)'), showlegend=False, name='_band_cons', hoverinfo='skip',
+    ))
+    """
     fig.add_trace(go.Scatter(
         x=AÑOS_FULL, y=list(d0[di]['med']),
         mode='lines', line=dict(color=col_iner, width=2, dash='dash'),
-        name='Inercial (100% presión)',
-        hovertemplate='Año: %{x}<br>%{y:.3f}<extra>Inercial</extra>',
+        name='Inercial (100% presión)', hovertemplate='Año: %{x}<br>%{y:.3f}<extra>Inercial</extra>',
     ))
     fig.add_trace(go.Scatter(
         x=AÑOS_FULL, y=list(d0[dk]['med']),
         mode='lines', line=dict(color=col_cons, width=2.8),
-        name='Escenario proyectado',
-        hovertemplate='Año: %{x}<br>%{y:.3f}<extra>Proyección</extra>',
+        name='Escenario proyectado', hovertemplate='Año: %{x}<br>%{y:.3f}<extra>Proyección</extra>',
     ))
 
     # Línea vertical de intervención
@@ -225,7 +247,7 @@ def construir_figura(variable='H'):
         return (f"Proyectado: {hc_fin:.3f} | Inercial: {hi_fin:.3f} "
                 f"| Diferencia: {'+' if g>=0 else ''}{g:.1f}%")
 
-    # Frames para todos los escenarios
+    # Frames
     frames = []
     for fa in GRID_A:
         for ff in GRID_F:
@@ -236,8 +258,8 @@ def construir_figura(variable='H'):
                     name=f"{fa:.2f}_{ff:.2f}_{yr}",
                     data=[
                         go.Scatter(x=AÑOS_OBS, y=list(obs_data)),
-                        go.Scatter(x=band_x, y=band_y(d, di)),   # Banda inercial
-                        go.Scatter(x=band_x, y=band_y(d, dk)),   # Banda proyectada
+                        #go.Scatter(x=band_x, y=band_y(d, di)),
+                        #go.Scatter(x=band_x, y=band_y(d, dk)),
                         go.Scatter(x=AÑOS_FULL, y=list(d[di]['med'])),
                         go.Scatter(x=AÑOS_FULL, y=list(d[dk]['med'])),
                     ],
@@ -246,72 +268,55 @@ def construir_figura(variable='H'):
                                      xref='x', yref='paper',
                                      line=dict(color='rgba(220,220,220,0.55)', width=1.5, dash='dot'))],
                         annotations=[dict(xref='paper', yref='paper', x=0.01, y=0.97,
-                                          text=ganancia_txt(d, dk, di),
-                                          font=dict(color=COLORES['text'], size=11),
-                                          showarrow=False, bgcolor='rgba(26,29,39,0.8)',
-                                          borderpad=6)]
+                                          text=ganancia_txt(d, dk, di), font=dict(color=COLORES['text'], size=11),
+                                          showarrow=False, bgcolor='rgba(26,29,39,0.8)', borderpad=6)]
                     )
                 ))
     fig.frames = frames
 
-    # ── SLIDERS (separados verticalmente) ──
+    # ── SLIDERS (Ahora separados verticalmente) ──
     sliders = [
         dict(
             active=IDX_BASE,
             steps=[dict(method='animate',
                         args=[[f"{round(fa,2):.2f}_{round(GRID_F[IDX_BASE],2):.2f}_{GRID_YR[2]}"],
-                              dict(mode='immediate', frame=dict(duration=0, redraw=True),
-                                   transition=dict(duration=0))],
+                              dict(mode='immediate', frame=dict(duration=0, redraw=True), transition=dict(duration=0))],
                         label=f'{int(fa*100)}%') for fa in GRID_A],
-            currentvalue=dict(prefix='Factor presión pesquera (a): ',
-                              font=dict(color=COLORES['text'], size=11), xanchor='left'),
-            pad=dict(t=10), len=0.88, x=0.06, y=-0.15,
-            bgcolor=COLORES['ax'], bordercolor=COLORES['grid'],
-            tickcolor=COLORES['text'], font=dict(color=COLORES['text'], size=10),
+            currentvalue=dict(prefix='Factor presión pesquera (a): ', font=dict(color=COLORES['text'], size=11), xanchor='left'),
+            pad=dict(t=10), len=0.88, x=0.06, y=-0.15, # Movido abajo
+            bgcolor=COLORES['ax'], bordercolor=COLORES['grid'], tickcolor=COLORES['text'], font=dict(color=COLORES['text'], size=10),
         ),
         dict(
             active=IDX_BASE,
             steps=[dict(method='animate',
                         args=[[f"{round(GRID_A[IDX_BASE],2):.2f}_{round(ff,2):.2f}_{GRID_YR[2]}"],
-                              dict(mode='immediate', frame=dict(duration=0, redraw=True),
-                                   transition=dict(duration=0))],
+                              dict(mode='immediate', frame=dict(duration=0, redraw=True), transition=dict(duration=0))],
                         label=f'{int(ff*100)}%') for ff in GRID_F],
-            currentvalue=dict(prefix='Factor crec. flota (f): ',
-                              font=dict(color=COLORES['text'], size=11), xanchor='left'),
-            pad=dict(t=10), len=0.88, x=0.06, y=-0.35,
-            bgcolor=COLORES['ax'], bordercolor=COLORES['grid'],
-            tickcolor=COLORES['text'], font=dict(color=COLORES['text'], size=10),
+            currentvalue=dict(prefix='Factor crec. flota (f): ', font=dict(color=COLORES['text'], size=11), xanchor='left'),
+            pad=dict(t=10), len=0.88, x=0.06, y=-0.35, # Movido abajo
+            bgcolor=COLORES['ax'], bordercolor=COLORES['grid'], tickcolor=COLORES['text'], font=dict(color=COLORES['text'], size=10),
         ),
         dict(
             active=2,
             steps=[dict(method='animate',
                         args=[[f"{round(GRID_A[IDX_BASE],2):.2f}_{round(GRID_F[IDX_BASE],2):.2f}_{int(yr)}"],
-                              dict(mode='immediate', frame=dict(duration=0, redraw=True),
-                                   transition=dict(duration=0))],
+                              dict(mode='immediate', frame=dict(duration=0, redraw=True), transition=dict(duration=0))],
                         label=str(int(yr))) for yr in GRID_YR],
-            currentvalue=dict(prefix='Año de intervención: ',
-                              font=dict(color=COLORES['text'], size=11), xanchor='left'),
-            pad=dict(t=10), len=0.88, x=0.06, y=-0.55,
-            bgcolor=COLORES['ax'], bordercolor=COLORES['grid'],
-            tickcolor=COLORES['text'], font=dict(color=COLORES['text'], size=10),
+            currentvalue=dict(prefix='Año de intervención: ', font=dict(color=COLORES['text'], size=11), xanchor='left'),
+            pad=dict(t=10), len=0.88, x=0.06, y=-0.55, # Movido abajo
+            bgcolor=COLORES['ax'], bordercolor=COLORES['grid'], tickcolor=COLORES['text'], font=dict(color=COLORES['text'], size=10),
         ),
     ]
 
-    # Layout final
+    # Layout
     fig.update_layout(
-        title=dict(text=titulo, font=dict(color=COLORES['text'], size=16),
-                   x=0.5, xanchor='center'),
+        title=dict(text=titulo, font=dict(color=COLORES['text'], size=16), x=0.5, xanchor='center'),
         plot_bgcolor=COLORES['ax'], paper_bgcolor=COLORES['bg'],
         font=dict(color=COLORES['text'], family='Arial, sans-serif'),
-        xaxis=dict(title='Año', tickfont=dict(color=COLORES['text'], size=10),
-                   gridcolor=COLORES['grid'], linecolor=COLORES['grid'],
-                   range=[AÑO_INI - 1, AÑO_INI + T_PROJ]),
-        yaxis=dict(title=ytit, tickfont=dict(color=COLORES['text'], size=10),
-                   gridcolor=COLORES['grid'], linecolor=COLORES['grid'],
-                   rangemode='nonnegative'),
-        legend=dict(bgcolor='rgba(26,29,39,0.85)', bordercolor=COLORES['grid'],
-                    font=dict(color=COLORES['text'], size=11),
-                    orientation='h', y=1.08, x=0.0),
+        xaxis=dict(title='Año', tickfont=dict(color=COLORES['text'], size=10), gridcolor=COLORES['grid'], linecolor=COLORES['grid'], range=[AÑO_INI - 1, AÑO_INI + T_PROJ]),
+        yaxis=dict(title=ytit, tickfont=dict(color=COLORES['text'], size=10), gridcolor=COLORES['grid'], linecolor=COLORES['grid'], rangemode='nonnegative'),
+        legend=dict(bgcolor='rgba(26,29,39,0.85)', bordercolor=COLORES['grid'], font=dict(color=COLORES['text'], size=11), orientation='h', y=1.08, x=0.0),
+        # AUMENTAMOS EL MARGEN INFERIOR PARA QUE QUEPAN LOS SLIDERS
         margin=dict(t=100, b=280, l=60, r=40),
         sliders=sliders,
         height=750,
@@ -320,15 +325,8 @@ def construir_figura(variable='H'):
 
     return fig
 
-
-# ── 5. EJECUCIÓN ──────────────────────────────────────────────────────────────
-# Para visualizar H (presa) con bandas de incertidumbre:
 fig_H = construir_figura('H')
 fig_H.show()
-
-# Para visualizar P (depredador):
-# fig_P = construir_figura('P')
-# fig_P.show()
 ```
 :::
 :::
