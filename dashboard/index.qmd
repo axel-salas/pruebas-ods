@@ -12,13 +12,22 @@ format:
     orientation: columns
     self-contained: true 
 ---
+::: {.hero}
 
 # 🌊 Biodiversidad y Pesca en Baja California
 
-## Un vistazo interactivo al equilibrio del ecosistema marino
+## Un dashboard interactivo para entender el equilibrio del ecosistema marino
 
-Explora cómo la biodiversidad y la actividad pesquera evolucionan en el tiempo, 
-y qué podría pasar bajo distintos escenarios futuros.
+Explora cómo cambian las especies, la pesca y el impacto humano a lo largo del tiempo.
+
+<div class="hero-buttons">
+
+[Explorar análisis](analisis.qmd){.btn .btn-primary}
+[Ver modelo predictivo](introduccion.qmd){.btn .btn-success}
+
+</div>
+
+:::
 
 ---
 
@@ -28,17 +37,19 @@ y qué podría pasar bajo distintos escenarios futuros.
 
 ::: {.g-col-4}
 ### 📈 Análisis Exploratorio
-Visualiza tendencias históricas de ballenas, pelícanos, producción pesquera y flota.
-
-[Ir al análisis](analisis.qmd){.btn .btn-primary}
+Tendencias históricas de biodiversidad y actividad pesquera.
 :::
 
 ::: {.g-col-4}
 ### 🔮 Modelo Predictivo
-Simula escenarios futuros y compara estrategias de conservación vs. inercia.
-
-[Ver proyecciones](introduccion.qmd){.btn .btn-success}
+Escenarios futuros bajo distintas decisiones.
 :::
 
+::: {.g-col-4}
+### 📌 Conclusiones
+Hallazgos clave para la sostenibilidad.
+:::
+
+:::
 
 :::
