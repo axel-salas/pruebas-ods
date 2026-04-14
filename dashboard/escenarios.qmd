@@ -1,4 +1,4 @@
- Escenarios a futuro {.seccion}
+ Escenarios a futuro 
 
 ## Column {width="55%"}
 GRAFICAS
