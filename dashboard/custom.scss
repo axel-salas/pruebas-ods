@@ -101,3 +101,25 @@ body {
   max-width: 1200px;
   margin: auto;
 }
+/* botones centrados */
+.btn {
+  margin: 10px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+/* separación visual */
+.quarto-dashboard-row {
+  margin-bottom: 25px;
+}
+
+/* callouts más suaves */
+.callout {
+  border-radius: 15px;
+  padding: 20px;
+}
+
+/* títulos centrados */
+h1, h2 {
+  text-align: center;
+}
