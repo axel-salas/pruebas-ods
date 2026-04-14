@@ -25,25 +25,21 @@ Este dashboard analiza cómo la actividad humana y fenómenos climáticos afecta
 :::
 
 ::: {.text-center .mb-4}
-[ Introduccion](introduccion.qmd){.btn .btn-secondary}
-[ Análisis Exploratorio](analisis.qmd){.btn .btn-primary}
-[ Modelo Predictivo](modelo.qmd){.btn .btn-success}
-[ Escenarios a Futuro](escenarios.qmd){.btn .btn-secondary}
-:::
-
-::: {.text-center .mb-4}
 #### ¿Qué encontrarás?
 :::
 
 ::: {.grid .mb-4}
 
-::: {.g-col-12 .g-col-md-4}
+::: {.g-col-12 .g-col-md-6 .g-col-lg-3}
 ::: {.callout-note appearance="simple"}
-##  Introduccion
+##  Introducción
 bla bla bla introduccion
+<br><br>
+[Introducción](introduccion.qmd){.btn .btn-secondary}
+:::
 :::
 
-::: {.g-col-12 .g-col-md-4}
+::: {.g-col-12 .g-col-md-6 .g-col-lg-3}
 ::: {.callout-note appearance="simple"}
 ##  Análisis Exploratorio
 Visualización de patrones históricos:
@@ -54,10 +50,12 @@ Visualización de patrones históricos:
 - Eventos de El Niño  
 
 Identifica cambios y momentos críticos del ecosistema.
+
+[Análisis Exploratorio](analisis.qmd){.btn .btn-primary}
 :::
 :::
 
-::: {.g-col-12 .g-col-md-4}
+::: {.g-col-12 .g-col-md-6 .g-col-lg-3}
 ::: {.callout-note appearance="simple"}
 ##  Modelo Predictivo
 Simulación de escenarios futuros:
@@ -67,17 +65,22 @@ Simulación de escenarios futuros:
 - Incertidumbre y variabilidad  
 
 Evalúa el impacto de decisiones actuales.
+
+[Modelo Predictivo](modelo.qmd){.btn .btn-success}
 :::
 :::
 
-::: {.g-col-12 .g-col-md-4}
+::: {.g-col-12 .g-col-md-6 .g-col-lg-3}
 ::: {.callout-note appearance="simple"}
 ##  Escenarios a futuro
+Proyecciones a largo plazo:
 
 - Presión sobre el ecosistema  
 - Riesgos a futuro  
 - Recomendaciones  
 
+<br>
+[Escenarios a Futuro](escenarios.qmd){.btn .btn-secondary}
 :::
 :::
 
