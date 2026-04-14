@@ -387,9 +387,9 @@ for res, archivo in zip(resultados, nombres_archivo):
     )
     print(f"  → Exportado: {archivo}")
 
-fig_inercial     = fig1
-fig_conservacion = fig2
-fig_catastrofico = fig3
+fig_inercial     = figs[0]
+fig_conservacion = figs[1]
+fig_catastrofico = figs[2]
 ```
 #  Escenarios a futuro
 ## Row {.tabset}
@@ -401,7 +401,7 @@ fig_catastrofico = fig3
 ::: {#col-grafica-inercial}
 ```{python}
 #| fig-responsive: true
-display(fig1)
+display(figs[0])
 ```
 :::
 
@@ -423,7 +423,7 @@ Las capturas se mantienen artificialmente altas mientras quedan recursos, luego 
 ::: {#col-grafica-moderado}
 ```{python}
 #| fig-responsive: true
-display(fig2)
+display(figs[1])
 ```
 :::
 
@@ -446,7 +446,7 @@ El ecosistema no se recupera a sus niveles históricos, pero deja de colapsar. E
 ```{python}
 #| fig-responsive: true
 # Nota: Aquí usamos la figura del escenario 3 de tu código
-display(fig3) 
+display(figs[2]) 
 ```
 :::
 
