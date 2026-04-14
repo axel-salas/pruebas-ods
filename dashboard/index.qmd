@@ -1,3 +1,18 @@
+---
+title: "DERRE - HackODS"
+subtitle: "ODS 14 · Vida Submarina "
+author: "DERRE"
+date: today
+execute:
+  echo: false
+  warning: false
+format:
+  dashboard:
+    scrolling: true
+    orientation: columns
+    self-contained: true 
+---
+
 # 🌊 Biodiversidad y Pesca en Baja California
 
 ## Un vistazo interactivo al equilibrio del ecosistema marino
