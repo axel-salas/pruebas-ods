@@ -18,9 +18,9 @@ format:
 
 ::: {.callout-important appearance="minimal"}
 
-## Interacción entre biodiversidad, pesca y cambio climático
+# Interacción entre biodiversidad, pesca y cambio climático
 
-Este dashboard analiza cómo la actividad pesquera y fenómenos como *El Niño* afectan el equilibrio del ecosistema marino.
+Este dashboard analiza cómo la actividad humana y fenómenos climáticos afectan el equilibrio del ecosistema marino, integrando evidencia histórica y proyecciones futuras.
 
 :::
 
@@ -28,15 +28,15 @@ Este dashboard analiza cómo la actividad pesquera y fenómenos como *El Niño* 
 
 ## Column {100%}
 
-[🔎 Explorar análisis](analisis.qmd){.btn .btn-primary}
-[📊 Ver modelo predictivo](modelo.qmd){.btn .btn-success}
-[📌 Leer conclusiones](conclusiones.qmd){.btn .btn-secondary}
+[🔎 Análisis Exploratorio](analisis.qmd){.btn .btn-primary}
+[📊 Modelo Predictivo](modelo.qmd){.btn .btn-success}
+[📌 Conclusiones](conclusiones.qmd){.btn .btn-secondary}
 
 ---
 
 ## Column {100%}
 
-## ¿Qué encontrarás?
+## Panorama del sistema
 
 ---
 
@@ -45,10 +45,14 @@ Este dashboard analiza cómo la actividad pesquera y fenómenos como *El Niño* 
 ::: {.callout-note appearance="simple"}
 ## 🔎 Análisis Exploratorio
 
-- Tendencias históricas  
-- Ballenas y pelícanos  
+Visualización de patrones históricos:
+
+- Avistamientos de ballenas  
+- Anidación de pelícanos  
 - Producción pesquera  
-- Impacto de El Niño  
+- Eventos de El Niño  
+
+Identifica cambios y momentos críticos del ecosistema.
 
 :::
 
@@ -59,10 +63,13 @@ Este dashboard analiza cómo la actividad pesquera y fenómenos como *El Niño* 
 ::: {.callout-note appearance="simple"}
 ## 📊 Modelo Predictivo
 
-- Simulación Monte Carlo  
-- Escenario inercial vs conservación  
-- Sliders interactivos  
-- Proyección a futuro  
+Simulación de escenarios futuros:
+
+- Trayectoria sin intervención  
+- Escenarios de conservación  
+- Incertidumbre y variabilidad  
+
+Evalúa el impacto de decisiones actuales.
 
 :::
 
@@ -73,10 +80,13 @@ Este dashboard analiza cómo la actividad pesquera y fenómenos como *El Niño* 
 ::: {.callout-note appearance="simple"}
 ## 📌 Conclusiones
 
-- Hallazgos clave  
-- Impacto humano  
-- Rol del clima  
+Síntesis estratégica:
+
+- Presión sobre el ecosistema  
+- Riesgos a futuro  
 - Recomendaciones  
+
+Enfoque en sostenibilidad y toma de decisiones.
 
 :::
 
@@ -86,13 +96,9 @@ Este dashboard analiza cómo la actividad pesquera y fenómenos como *El Niño* 
 
 ::: {.callout-important appearance="minimal"}
 
-## 💡 ¿Por qué importa?
+## 💡 Insight central
 
-El equilibrio marino depende de decisiones humanas.
-
-Este dashboard permite entender:
-- cómo evoluciona el ecosistema  
-- qué ocurre sin intervención  
-- qué estrategias son sostenibles  
+El sistema marino responde simultáneamente a presiones climáticas y humanas.  
+Entender esta interacción es clave para diseñar estrategias sostenibles.
 
 :::
