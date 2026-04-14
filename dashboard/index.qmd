@@ -12,26 +12,17 @@ format:
     orientation: columns
     self-contained: true 
 ---
-
-::: {.callout-important appearance="minimal"}
-### 🌎 Objetivo
-
-Analizar la interacción entre biodiversidad marina y actividad pesquera,
-y explorar escenarios para una gestión sostenible.
-:::
-
-::: {.hero}
+::: {.hero .fade-in}
 
 # 🌊 Biodiversidad y Pesca en Baja California
 
-## Un dashboard interactivo para entender el equilibrio del ecosistema marino
+## Exploración interactiva del equilibrio entre ecosistema y actividad humana
 
-Explora cómo cambian las especies, la pesca y el impacto humano a lo largo del tiempo.
+<div class="hero-buttons fade-in-delay">
 
-<div class="hero-buttons">
+[📈 Análisis Exploratorio](analisis.qmd){.btn .btn-primary}
+[🔮 Modelo Predictivo](introduccion.qmd){.btn .btn-success}
 
-[Explorar análisis](analisis.qmd){.btn .btn-primary}
-[Ver modelo predictivo](introduccion.qmd){.btn .btn-success}
 
 </div>
 
@@ -39,25 +30,23 @@ Explora cómo cambian las especies, la pesca y el impacto humano a lo largo del 
 
 ---
 
-## 🔎 ¿Qué encontrarás?
+## 🔎 ¿Qué encontrarás? {.fade-in}
 
 ::: {.grid}
 
 ::: {.g-col-4}
 ### 📈 Análisis Exploratorio
-Tendencias históricas de biodiversidad y actividad pesquera.
+Visualiza cómo evolucionan las especies y la actividad pesquera en el tiempo.
 :::
 
 ::: {.g-col-4}
 ### 🔮 Modelo Predictivo
-Escenarios futuros bajo distintas decisiones.
+Explora escenarios futuros y el impacto de distintas decisiones.
 :::
 
 ::: {.g-col-4}
 ### 📌 Conclusiones
-Hallazgos clave para la sostenibilidad.
-:::
-
+Identifica los hallazgos clave para la sostenibilidad marina.
 :::
 
 :::
