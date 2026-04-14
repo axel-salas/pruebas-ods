@@ -8,10 +8,16 @@ website:
       left:
         - href: index.qmd
           text: Inicio
+        - href: introduccion.qmd
+          text: Introducción
         - href: analisis.qmd
           text: Análisis Exploratorio
-        - href: introduccion.qmd
-          text: intro
+        - href: modelo.qmd
+          text: Modelo Predictivo
+        - href: escenarios.qmd
+          text: Escenarios a futuro
+        - href: conclusiones.qmd
+          text: Conclusiones
 
 format:
   dashboard:
