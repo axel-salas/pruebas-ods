@@ -83,3 +83,7 @@ Enfoque en sostenibilidad y toma de decisiones.
 El sistema marino responde simultáneamente a presiones climáticas y humanas.  
 Entender esta interacción es clave para diseñar estrategias sostenibles.
 :::
+
+::: {.ods-footer-box}
+**ODS 14 · Vida Submarina** · Agenda 2030 para el Desarrollo Sostenible
+:::
