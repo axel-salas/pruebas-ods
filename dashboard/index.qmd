@@ -12,6 +12,14 @@ format:
     orientation: columns
     self-contained: true 
 ---
+
+::: {.callout-important appearance="minimal"}
+### 🌎 Objetivo
+
+Analizar la interacción entre biodiversidad marina y actividad pesquera,
+y explorar escenarios para una gestión sostenible.
+:::
+
 ::: {.hero}
 
 # 🌊 Biodiversidad y Pesca en Baja California
