@@ -4,6 +4,14 @@ project:
 
 website:
   title: "[TÍTULO DE TU DASHBOARD]"
+  navbar:
+      left:
+        - href: index.qmd
+          text: Inicio
+        - href: analisis.qmd
+          text: Análisis Exploratorio
+        - href: introduccion.qmd
+          text: intro
 
 format:
   dashboard:
