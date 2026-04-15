@@ -31,12 +31,12 @@ Preguntamos a Gemini con su función de buscar por libros de ecología/biología
 ### 03-27
 **Tarea**: Se utilizó Claude para sugerir otros métodos numéricos para ajustar el modelo (al principio no intentamos usar métodos de MCMC) 
 
-**Prompt**: Estos son los datos de la simulación
+**Prompt**: "Estos son los datos de la simulación
 ParámetroValorDescripciónr0.2556Tasa crecimiento presaK1.0000Cap. de carga presa [fijo]a4.8606Tasa de ataqueh5.0000Handling timee0.2032Eficiencia conversiónm0.0100Mortalidad depredadorf0.0100Crecimiento autónomo flotaC1.0000Cap. de carga flota [fijo]
 Métricas de Bondad de Ajuste
 MétricaValorDescripción$R^2$ H0.1828Bondad ajuste presa$R^2$ P0.3636Bondad ajuste depredadorRMSE H0.2390Error cuadrático medio presaRMSE P0.1844Error cuadrático medio depredador
 
-Los errores cuadráticos aún son muy bajos, que otros métodos hay diponsibles en SciPy que podríamos utilizar para conseguir un mejor ajuste 
+Los errores cuadráticos aún son muy bajos, que otros métodos hay diponsibles en SciPy que podríamos utilizar para conseguir un mejor ajuste"
 
 **Decisión**: Nos propuso utilizar el método de differential evolution para obtener una mejor convergencia pues el método del descenso del gradiente Adam no nos convenció. Lo probamos y no fue muy eficiente por el ruido de los datos, así que mejor optamos por un método probabilístico para obtener intervalos de confianza y tener más certeza del ajuste del modelo 
 
