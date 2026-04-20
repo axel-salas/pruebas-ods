@@ -28,7 +28,7 @@ jobs:
           uv pip install jupyter nbformat pandas matplotlib plotly
 
       - name: Render Quarto Project
-        working-directory: ./dashboard
+        working-directory: /dashboard
         run: |
           uv run quarto render
 
