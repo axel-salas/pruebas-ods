@@ -6,7 +6,9 @@ website:
   title: "DERRE - HackODS  ODS 14 · Vida Submarina"
 
 format:
-  dashboard:
+  html:
+    theme: cosmo
+    toc: false
+    embed-resources: true
+    page-layout: full
     scrolling: true
-    orientation: rows
-    theme: flatly
