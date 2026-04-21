@@ -12,7 +12,7 @@ format:
     smooth-scroll: true
     toc: false
     theme: none
-    css: estilos.css
+    scss: custom.scss
     include-in-header:
       text: |
         <link rel="preconnect" href="https://fonts.googleapis.com">
