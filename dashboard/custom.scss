@@ -712,3 +712,29 @@ body {
 @media (max-width: 520px) {
   .hero-pregunta { font-size: 1.35rem; }
 }
+
+/* Estilo para el botón de navegación "Siguiente" */
+.navbar {
+  .navbar-nav {
+    // Buscamos el enlace dentro de la navegación
+    .nav-link {
+      &[aria-label="Ir al siguiente tablero"] {
+        border: 1px solid $cian-marino; // El color que definimos antes
+        border-radius: 8px;
+        padding: 5px 15px !important;
+        margin-left: 15px;
+        color: $cian-marino !important;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        background: rgba($cian-marino, 0.05);
+
+        &:hover {
+          background: $cian-marino;
+          color: $oceano-profundo !important; // Cambia el texto a oscuro al pasar el mouse
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba($cian-marino, 0.3);
+        }
+      }
+    }
+  }
+}
