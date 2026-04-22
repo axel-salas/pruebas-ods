@@ -146,7 +146,7 @@ Análisis de riesgos y recomendaciones estratégicas para la conservación marin
 :::
 :::
 
-## Row {height="5vh"}
+## Row {height="6vh"}
 
 ### Column {width="100%"}
 
