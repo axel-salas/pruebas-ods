@@ -321,7 +321,28 @@ def hacer_figura(res):
 figs = [hacer_figura(res) for res in resultados]
 ```
 
-# Escenario 1 — Inercial
+# Escenario 1 — Catastrófico
+
+## Row {height="70%"}
+
+```{python}
+#| fig-responsive: true
+display(figs[2])
+```
+
+## Row {height="30%"}
+
+::: {.callout-important appearance="minimal" icon=false}
+
+## 03 — Lo que pasa si seguimos acelerando
+
+Este escenario no es una advertencia abstracta: es la predicción directa de tendencias ya observadas. Si la dinámica actual se intensifica — presión pesquera **+40%** (**a × 1.4 = 2.863**) y flota acelerando al mismo ritmo (**f × 1.4 = 0.0661**) desde hoy — el modelo muestra una biodiversidad marina que cae por debajo del escenario inercial de forma persistente, oscilando en niveles de **0.05–0.08**. A esos niveles, la capacidad reproductiva está tan comprometida que cualquier perturbación adicional —El Niño, una marea roja, una temporada agresiva— puede empujar la población fuera del rango de recuperación.
+
+La flota, paradójicamente, tampoco gana: más embarcaciones persiguiendo menos peces, con una biodiversidad mucho más dañada como costo del crecimiento. El modelo no puede responder cuánto vale hoy un pelícano que no anida o una ballena que no regresa. Sí puede mostrar que el costo de no responderla se acumula, año tras año, en una curva que baja más rápido de lo que cualquier regulación futura podrá revertir.
+
+:::
+
+# Escenario 2 — Inercial
 
 ## Row {height="70%"}
 
@@ -342,7 +363,7 @@ Este escenario no supone ningún cambio. Los parámetros son exactamente los que
 
 :::
 
-# Escenario 2 — Conservación
+# Escenario 3 — Conservación
 
 ## Row {height="70%"}
 
@@ -363,25 +384,6 @@ El modelo muestra algo que vale la pena leer con cuidado: la biodiversidad respo
 
 :::
 
-# Escenario 3 — Catastrófico
 
-## Row {height="70%"}
-
-```{python}
-#| fig-responsive: true
-display(figs[2])
-```
-
-## Row {height="30%"}
-
-::: {.callout-important appearance="minimal" icon=false}
-
-## 03 — Lo que pasa si seguimos acelerando
-
-Este escenario no es una advertencia abstracta: es la predicción directa de tendencias ya observadas. Si la dinámica actual se intensifica — presión pesquera **+40%** (**a × 1.4 = 2.863**) y flota acelerando al mismo ritmo (**f × 1.4 = 0.0661**) desde hoy — el modelo muestra una biodiversidad marina que cae por debajo del escenario inercial de forma persistente, oscilando en niveles de **0.05–0.08**. A esos niveles, la capacidad reproductiva está tan comprometida que cualquier perturbación adicional —El Niño, una marea roja, una temporada agresiva— puede empujar la población fuera del rango de recuperación.
-
-La flota, paradójicamente, tampoco gana: más embarcaciones persiguiendo menos peces, con una biodiversidad mucho más dañada como costo del crecimiento. El modelo no puede responder cuánto vale hoy un pelícano que no anida o una ballena que no regresa. Sí puede mostrar que el costo de no responderla se acumula, año tras año, en una curva que baja más rápido de lo que cualquier regulación futura podrá revertir.
-
-:::
 ```
 
