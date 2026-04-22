@@ -6,6 +6,7 @@ project:
     
 website:
   title: "DERRE - HackODS ODS 14 · Vida Submarina"
+  search: false
   navbar:
       left:
         - href: index.qmd
