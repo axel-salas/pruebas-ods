@@ -9,9 +9,6 @@ format:
       - text: "Siguiente: Introducción →"
         href: "introduccion.html"
         aria-label: "Ir al siguiente tablero"
-      - icon: github
-        href: https://github.com/axel-salas/DERRE_hackods
-        aria-label: Repositorio
 execute:
   echo: false
   warning: false
