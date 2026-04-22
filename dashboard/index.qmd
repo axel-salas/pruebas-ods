@@ -9,6 +9,9 @@ format:
       - icon: github
         href: https://github.com/axel-salas/DERRE_hackods
         aria-label: Repositorio
+      - text: "Siguiente: Introducción →"
+        href: "introduccion.qmd"
+        aria-label: "Ir al siguiente tablero"
 execute:
   echo: false
   warning: false
