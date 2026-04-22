@@ -84,7 +84,9 @@ AÑOS_OBS  = list(AÑOS[:N_HIST])
 AÑOS_FULL = list(AÑOS)
 
 def construir_figura(variable='H'):
+    assert variable in ('H', 'P')
     es_H = variable == 'H'
+
     col_cons = COLORES['H_cons'] if es_H else COLORES['P_cons']
     col_iner = COLORES['H_iner'] if es_H else COLORES['P_iner']
     obs_data = H_OBS if es_H else P_OBS
@@ -97,8 +99,12 @@ def construir_figura(variable='H'):
     dk = 'Hc' if es_H else 'Pc'
     di = 'Hi' if es_H else 'Pi'
 
+    AÑOS_OBS  = list(AÑOS[:N_HIST])
+    AÑOS_FULL = list(AÑOS)
+
     fig = go.Figure()
 
+    # Datos históricos
     fig.add_trace(go.Scatter(
         x=AÑOS_OBS,
         y=list(obs_data),
@@ -107,6 +113,7 @@ def construir_figura(variable='H'):
         name='Datos históricos'
     ))
 
+    # Inercial
     fig.add_trace(go.Scatter(
         x=AÑOS_FULL,
         y=list(d0[di]['med']),
@@ -115,6 +122,7 @@ def construir_figura(variable='H'):
         name='Inercial'
     ))
 
+    # Proyección
     fig.add_trace(go.Scatter(
         x=AÑOS_FULL,
         y=list(d0[dk]['med']),
@@ -123,8 +131,9 @@ def construir_figura(variable='H'):
         name='Proyección'
     ))
 
-    frames = []
+    # ── FRAMES ─────────────────────────────────────────────
 
+    frames = []
     for fa in GRID_A:
         for ff in GRID_F:
             for yr in GRID_YR:
@@ -142,11 +151,53 @@ def construir_figura(variable='H'):
 
     fig.frames = frames
 
+    # ── SLIDERS ────────────────────────────────────────────
+
+    sliders = [
+        dict(
+            active=IDX_BASE,
+            steps=[
+                dict(
+                    method='animate',
+                    args=[[f"{round(fa,2):.2f}_{round(ff0,2):.2f}_{yr0}"],
+                          dict(mode='immediate', frame=dict(duration=0, redraw=True))],
+                    label=f'{int(fa*100)}%'
+                ) for fa in GRID_A
+            ],
+            currentvalue=dict(prefix='Factor presión pesquera (a): ')
+        ),
+        dict(
+            active=IDX_BASE,
+            steps=[
+                dict(
+                    method='animate',
+                    args=[[f"{round(fa0,2):.2f}_{round(ff,2):.2f}_{yr0}"],
+                          dict(mode='immediate', frame=dict(duration=0, redraw=True))],
+                    label=f'{int(ff*100)}%'
+                ) for ff in GRID_F
+            ],
+            currentvalue=dict(prefix='Factor crecimiento flota (f): ')
+        ),
+        dict(
+            active=2,
+            steps=[
+                dict(
+                    method='animate',
+                    args=[[f"{round(fa0,2):.2f}_{round(ff0,2):.2f}_{int(yr)}"],
+                          dict(mode='immediate', frame=dict(duration=0, redraw=True))],
+                    label=str(int(yr))
+                ) for yr in GRID_YR
+            ],
+            currentvalue=dict(prefix='Año intervención: ')
+        )
+    ]
+
     fig.update_layout(
         plot_bgcolor=COLORES['ax'],
         paper_bgcolor=COLORES['bg'],
         font=dict(color=COLORES['text']),
-        height=700
+        height=750,
+        sliders=sliders
     )
 
     return fig
